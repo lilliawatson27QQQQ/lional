@@ -428,21 +428,21 @@ export default function Dashboard() {
                           الإيداع من بنك آخر
                         </h5>
                         <p className="text-sm">
-                          إذا كنت ترغب بالإيداع من بنك آخر، يرجى قراءة تعليمات
-                          الإيداع الكاملة.
+                          إذا كنت ترغب بالإيداع من بنك آخر، يرجى الانتقال إلى
+                          صفحة التحويلات واختيار قسم الإيداع.
                         </p>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="mt-2 w-full bg-amber-100 hover:bg-amber-200 text-amber-800 border-amber-200"
-                          onClick={() =>
-                            (window.location.href =
-                              "/bank/deposit-instructions")
-                          }
-                        >
-                          قراءة تعليمات الإيداع
-                        </Button>
                       </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="mt-3 w-full bg-blue-100 hover:bg-blue-200 text-blue-800 border-blue-200"
+                        onClick={() =>
+                          (window.location.href = "/bank/transfers")
+                        }
+                      >
+                        <ArrowUpRight className="ml-2 h-4 w-4" />
+                        الانتقال إلى صفحة التحويلات
+                      </Button>
                     </div>
                   </div>
                 </PopoverContent>
@@ -462,32 +462,42 @@ export default function Dashboard() {
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <h4 className="font-bold text-blue-600 text-lg">
-                        خيارات الإرسال
+                        تعليمات الإرسال
                       </h4>
-                      <div className="space-y-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-full bg-blue-50 hover:bg-blue-100 text-blue-800 border-blue-200 justify-start"
-                          onClick={() =>
-                            (window.location.href = "/bank/send-internal")
-                          }
-                        >
-                          <Send className="h-4 w-4 ml-2" />
-                          ارسال لبنك الامان
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-full bg-amber-50 hover:bg-amber-100 text-amber-800 border-amber-200 justify-start"
-                          onClick={() =>
-                            (window.location.href = "/bank/send-external")
-                          }
-                        >
-                          <Globe className="h-4 w-4 ml-2" />
-                          ارسال لحساب من بنك اخر
-                        </Button>
+                      <div className="p-3 bg-blue-50 rounded-lg border border-blue-100">
+                        <h5 className="font-bold text-blue-800 mb-2">
+                          الإرسال إلى بنك الأمان
+                        </h5>
+                        <p className="text-sm">
+                          يمكنك إرسال الأموال إلى عملاء بنك الأمان باستخدام:
+                        </p>
+                        <ul className="list-disc list-inside text-sm mt-1 space-y-1">
+                          <li>رقم الهاتف</li>
+                          <li>البريد الإلكتروني</li>
+                          <li>رقم الحساب</li>
+                        </ul>
                       </div>
+                      <div className="p-3 bg-amber-50 rounded-lg border border-amber-100">
+                        <h5 className="font-bold text-amber-800 mb-2">
+                          الإرسال إلى بنك آخر
+                        </h5>
+                        <p className="text-sm">
+                          للإرسال إلى بنك آخر، ستحتاج إلى معلومات المستلم
+                          الكاملة بما في ذلك رقم الآيبان (IBAN) ورمز السويفت
+                          (SWIFT).
+                        </p>
+                      </div>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="mt-3 w-full bg-blue-100 hover:bg-blue-200 text-blue-800 border-blue-200"
+                        onClick={() =>
+                          (window.location.href = "/bank/transfers")
+                        }
+                      >
+                        <ArrowUpRight className="ml-2 h-4 w-4" />
+                        الانتقال إلى صفحة التحويلات
+                      </Button>
                     </div>
                   </div>
                 </PopoverContent>
