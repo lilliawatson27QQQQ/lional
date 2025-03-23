@@ -296,7 +296,7 @@ export default function Dashboard() {
     >
       {/* رأس الصفحة */}
       {/* بطاقة الرصيد الرئيسية */}
-      <Card className="bg-gradient-to-r from-blue-500 to-blue-400 text-white overflow-hidden relative w-full h-full shadow-xl rounded-xl border border-primary-foreground/5 backdrop-blur-sm">
+      <Card className="bg-gradient-to-r from-blue-500 to-blue-400 text-white overflow-y-auto max-h-[80vh] relative w-full shadow-xl rounded-xl border border-primary-foreground/5 backdrop-blur-sm">
         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full -mr-10 -mt-10 blur-xl"></div>
         <div className="absolute bottom-0 left-0 w-24 h-24 bg-white/10 rounded-full -ml-8 -mb-8 blur-lg"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -310,7 +310,7 @@ export default function Dashboard() {
           </div>
         </CardHeader>
 
-        <CardContent className="p-3 md:p-6 pt-0 relative z-10">
+        <CardContent className="p-3 md:p-6 pt-0 pb-16 relative z-10">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 mb-6">
             <div className="w-full md:w-1/2 bg-white/20 p-4 rounded-lg mb-2 text-center md:text-right shadow-inner">
               <p className="text-3xl md:text-4xl font-bold tracking-tight">

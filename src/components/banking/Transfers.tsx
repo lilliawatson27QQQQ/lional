@@ -59,7 +59,7 @@ export default function Transfers() {
   const [success, setSuccess] = useState("");
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 pb-20">
       <h1 className="text-3xl font-bold">التحويلات المالية</h1>
 
       <Tabs defaultValue="deposit" className="w-full">
@@ -405,26 +405,6 @@ export default function Transfers() {
                   )}
 
                   <div className="space-y-2">
-                    <Label htmlFor="from-account-send">من حساب</Label>
-                    <Select value={fromAccount} onValueChange={setFromAccount}>
-                      <SelectTrigger id="from-account-send">
-                        <SelectValue placeholder="اختر الحساب" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="current">
-                          الحساب الجاري (**** 4832)
-                        </SelectItem>
-                        <SelectItem value="savings">
-                          حساب التوفير (**** 7621)
-                        </SelectItem>
-                        <SelectItem value="investment">
-                          حساب الاستثمار (**** 9354)
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
                     <Label htmlFor="recipient-account">رقم حساب المستلم</Label>
                     <Input
                       id="recipient-account"
@@ -455,11 +435,6 @@ export default function Transfers() {
                       value={recipientPhone}
                       onChange={(e) => setRecipientPhone(e.target.value)}
                     />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="recipient-name">اسم المستلم</Label>
-                    <Input id="recipient-name" placeholder="أدخل اسم المستلم" />
                   </div>
 
                   <div className="flex space-x-4 rtl:space-x-reverse">
@@ -506,21 +481,6 @@ export default function Transfers() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="purpose-send">الغرض من التحويل</Label>
-                    <Select>
-                      <SelectTrigger id="purpose-send">
-                        <SelectValue placeholder="اختر الغرض" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="family">دعم عائلي</SelectItem>
-                        <SelectItem value="personal">مصاريف شخصية</SelectItem>
-                        <SelectItem value="business">أعمال تجارية</SelectItem>
-                        <SelectItem value="other">أخرى</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
                   <div className="pt-4">
                     <Button
                       className="w-full"
@@ -530,11 +490,6 @@ export default function Transfers() {
                         setSuccess("");
 
                         // Validate inputs
-                        if (!fromAccount) {
-                          setError("يرجى اختيار الحساب المرسل منه");
-                          return;
-                        }
-
                         if (!recipientAccount) {
                           setError("يرجى إدخال رقم حساب المستلم");
                           return;
@@ -555,24 +510,6 @@ export default function Transfers() {
                           return;
                         }
 
-                        // Check account balance (mock implementation)
-                        const accountBalances = {
-                          current: 5000,
-                          savings: 10000,
-                          investment: 15000,
-                        };
-
-                        const selectedAccountBalance =
-                          accountBalances[
-                            fromAccount as keyof typeof accountBalances
-                          ] || 0;
-                        const transferAmount = parseFloat(amount) + 0.3; // Amount + fee
-
-                        if (transferAmount > selectedAccountBalance) {
-                          setError("رصيد الحساب غير كافٍ لإتمام التحويل");
-                          return;
-                        }
-
                         // Process transfer (mock implementation)
                         setTimeout(() => {
                           setSuccess("تم إرسال التحويل بنجاح!");
@@ -586,25 +523,6 @@ export default function Transfers() {
                     >
                       <Send className="ml-2 h-4 w-4" />
                       إرسال الأموال
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>المستفيدون المحفوظون</CardTitle>
-                  <CardDescription>
-                    اختر من قائمة المستفيدين المحفوظين لديك
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <p className="text-center text-muted-foreground">
-                      لا يوجد مستفيدون محفوظون حالياً
-                    </p>
-                    <Button variant="outline" className="w-full">
-                      إضافة مستفيد جديد
                     </Button>
                   </div>
                 </CardContent>
