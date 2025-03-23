@@ -1,5 +1,11 @@
-import { Suspense } from "react";
-import { useRoutes, Routes, Route } from "react-router-dom";
+import { Suspense, useEffect } from "react";
+import {
+  useRoutes,
+  Routes,
+  Route,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import Home from "./components/home";
 import Login from "./components/banking/Login";
 import Register from "./components/banking/Register";
@@ -25,6 +31,79 @@ import { DebugPanel } from "./components/ui/debug-panel";
 import routes from "tempo-routes";
 
 function App() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Handle one-page scroll effect for bank and admin layouts
+  useEffect(() => {
+    // Only apply scroll effect on bank and admin routes
+    if (
+      location.pathname.startsWith("/bank") ||
+      location.pathname.startsWith("/admin")
+    ) {
+      let isScrolling = false;
+      let lastScrollTime = 0;
+      const scrollCooldown = 1000; // 1 second cooldown between scroll actions
+
+      // Define the routes for each layout
+      const bankRoutes = [
+        "/bank",
+        "/bank/accounts",
+        "/bank/currencies",
+        "/bank/transfers",
+        "/bank/transactions",
+        "/bank/savings",
+        "/bank/visa",
+        "/bank/settings",
+        "/bank/help",
+        "/bank/deposit-instructions",
+      ];
+
+      const adminRoutes = [
+        "/admin",
+        "/admin/customers",
+        "/admin/accounts",
+        "/admin/transactions",
+        "/admin/currencies",
+        "/admin/alerts",
+        "/admin/security",
+        "/admin/settings",
+      ];
+
+      // Determine which route array to use based on current path
+      const routes = location.pathname.startsWith("/bank")
+        ? bankRoutes
+        : adminRoutes;
+      const currentIndex = routes.indexOf(location.pathname);
+
+      const handleWheel = (e: WheelEvent) => {
+        const now = Date.now();
+        if (isScrolling || now - lastScrollTime < scrollCooldown) return;
+
+        isScrolling = true;
+        lastScrollTime = now;
+
+        if (e.deltaY > 0 && currentIndex < routes.length - 1) {
+          // Scroll down - go to next section
+          navigate(routes[currentIndex + 1]);
+        } else if (e.deltaY < 0 && currentIndex > 0) {
+          // Scroll up - go to previous section
+          navigate(routes[currentIndex - 1]);
+        }
+
+        setTimeout(() => {
+          isScrolling = false;
+        }, scrollCooldown);
+      };
+
+      window.addEventListener("wheel", handleWheel, { passive: false });
+
+      return () => {
+        window.removeEventListener("wheel", handleWheel);
+      };
+    }
+  }, [location.pathname, navigate]);
+
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <>

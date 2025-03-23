@@ -84,10 +84,15 @@
   * {
     @apply border-border;
   }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-background text-foreground;
     -webkit-tap-highlight-color: transparent;
     font-family: "Tajawal", sans-serif;
+    overflow-y: auto;
+    height: 100vh;
   }
   input,
   textarea,
@@ -97,4 +102,40 @@
     -webkit-tap-highlight-color: transparent;
     font-family: "Tajawal", sans-serif;
   }
+}
+
+/* Section styles for one-page scroll effect */
+.section {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.5s ease;
+}
+
+/* Animation for page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 500ms,
+    transform 500ms;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition:
+    opacity 500ms,
+    transform 500ms;
 }

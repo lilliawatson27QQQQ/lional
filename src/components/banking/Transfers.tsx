@@ -75,7 +75,10 @@ export default function Transfers() {
         </TabsList>
 
         {/* قسم الإيداع */}
-        <TabsContent value="deposit" className="space-y-6">
+        <TabsContent
+          value="deposit"
+          className="space-y-6 max-h-[70vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-primary scrollbar-track-gray-100"
+        >
           <Tabs defaultValue="aman-deposit">
             <TabsList className="w-full max-w-md mb-4">
               <TabsTrigger value="aman-deposit" className="flex-1">
@@ -185,79 +188,6 @@ export default function Transfers() {
                     >
                       <Download className="ml-2 h-4 w-4" />
                       نسخ الكل
-                    </Button>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="from-account-aman">من حساب</Label>
-                    <Select value={fromAccount} onValueChange={setFromAccount}>
-                      <SelectTrigger id="from-account-aman">
-                        <SelectValue placeholder="اختر الحساب" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="current">
-                          الحساب الجاري (**** 4832)
-                        </SelectItem>
-                        <SelectItem value="savings">
-                          حساب التوفير (**** 7621)
-                        </SelectItem>
-                        <SelectItem value="investment">
-                          حساب الاستثمار (**** 9354)
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="to-account-aman">إلى حساب</Label>
-                    <Select value={toAccount} onValueChange={setToAccount}>
-                      <SelectTrigger id="to-account-aman">
-                        <SelectValue placeholder="اختر الحساب" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="current">
-                          الحساب الجاري (**** 4832)
-                        </SelectItem>
-                        <SelectItem value="savings">
-                          حساب التوفير (**** 7621)
-                        </SelectItem>
-                        <SelectItem value="investment">
-                          حساب الاستثمار (**** 9354)
-                        </SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="amount-aman">المبلغ (د.إ)</Label>
-                    <Input
-                      id="amount-aman"
-                      type="number"
-                      placeholder="أدخل المبلغ"
-                      value={amount}
-                      onChange={(e) => setAmount(e.target.value)}
-                    />
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="purpose-aman">الغرض من الإيداع</Label>
-                    <Select>
-                      <SelectTrigger id="purpose-aman">
-                        <SelectValue placeholder="اختر الغرض" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="personal">مصاريف شخصية</SelectItem>
-                        <SelectItem value="savings">ادخار</SelectItem>
-                        <SelectItem value="investment">استثمار</SelectItem>
-                        <SelectItem value="other">أخرى</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  <div className="pt-4">
-                    <Button className="w-full">
-                      <ArrowRight className="ml-2 h-4 w-4" />
-                      إتمام الإيداع
                     </Button>
                   </div>
                 </CardContent>
@@ -370,7 +300,10 @@ export default function Transfers() {
         </TabsContent>
 
         {/* قسم الإرسال */}
-        <TabsContent value="send" className="space-y-6">
+        <TabsContent
+          value="send"
+          className="space-y-6 max-h-[70vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-primary scrollbar-track-gray-100"
+        >
           <Tabs defaultValue="aman-send">
             <TabsList className="w-full max-w-md mb-4">
               <TabsTrigger value="aman-send" className="flex-1">
